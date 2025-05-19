@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.WorkRecordMapper">
+
+
+
+    <select id="selectAll" resultType="com.example.entity.WorkRecord">
+        SELECT
+        wr.*,
+        st.subtasks_name AS name,
+        e.name AS ename
+        FROM `workrecord` wr
+        LEFT JOIN subtasks st ON wr.task_id = st.id
+        LEFT JOIN `employee` e ON wr.user_id = e.id
+        <where>
+            <if test="ename != null and ename != ''">
+                AND e.name LIKE CONCAT('%', #{ename}, '%')
+            </if>
+            <if test="userid != null">
+                AND user_id = #{userid}
+            </if>
+        </where>
+        order by id desc
+    </select>
+    <update id="updateById" >
+        UPDATE `workrecord`
+        <set>
+            task_id = #{taskid},
+           user_id = #{userid},
+           status = #{status},
+           reason = #{reason},
+            time = #{time},
+            name=#{name},
+            ename=#{ename},
+            number=#{number}
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <select id="selectById" resultType="com.example.entity.WorkRecord">
+        select * from workrecord where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from workrecord where  id = #{id}
+    </delete>
+
+</mapper>

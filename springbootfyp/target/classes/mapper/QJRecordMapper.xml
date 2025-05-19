@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.QJRecordMapper">
+
+
+
+    <select id="selectAll" resultType="com.example.entity.QJRecord">
+        select qjrecord.*,employee.name as ename from `qjrecord`
+        left join `employee` on qjrecord.userid = employee.id
+
+        <where>
+<if test="title != null and title!=''">and title like concat('%',#{title},'%')</if>
+            <if test="userid != null">and userid =#{userid}</if>
+       </where>
+order by id desc
+    </select>
+    <insert id="insert" parameterType="com.example.entity.QJRecord">
+        INSERT INTO qjrecord(
+            userid, title, text, status, reason,
+            starttime, endtime, time,ename
+        ) VALUES (
+                     #{userid}, #{title}, #{text}, #{status}, #{reason},
+                     #{starttime}, #{endtime}, #{time},#{ename}
+                 )
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.QJRecord">
+        UPDATE qjrecord
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="text != null">text = #{text},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="reason != null">reason = #{reason},</if>
+            <if test="starttime != null">start_time = #{startTime},</if>
+            <if test="endtime != null">end_time = #{endTime},</if>
+            <if test="time != null">time_slot = #{timeSlot}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+    <select id="selectById" resultType="com.example.entity.QJRecord">
+        select * from qjrecord where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from qjrecord where  id = #{id}
+    </delete>
+
+</mapper>

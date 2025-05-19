@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.AssetMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Asset">
+        select
+        id,
+        device_name as deviceName,  <!-- 统一命名 -->
+        price,
+        number,
+        situation,
+        free_sit as freeSit
+        from `asset`
+        <where>
+            <if test="deviceName != null and deviceName != ''">
+                and `asset`.`device_name` like concat ('%', #{deviceName}, '%')
+            </if>
+
+
+        </where>
+
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Asset">
+        select * from asset where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from asset where  id = #{id}
+    </delete>
+
+</mapper>

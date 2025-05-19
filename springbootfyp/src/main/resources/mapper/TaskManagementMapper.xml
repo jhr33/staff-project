@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TaskManagementMapper">
+
+    <select id="selectAll" resultType="com.example.entity.TaskManagement">
+        select `task_management`.* from `task_management`
+
+        <where>
+			<if test="taskName != null and taskName != ''">
+				and `task_management`.`task_name` like concat ('%', #{taskName}, '%')
+			</if>
+
+        </where>
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.TaskManagement">
+        select * from task_management where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from task_management where  id = #{id}
+    </delete>
+
+</mapper>

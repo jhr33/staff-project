@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SubtasksMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Subtasks">
+        select `subtasks`.*, `task_management`.`task_name` as belong from `subtasks`
+		left join `task_management` on `subtasks`.`task_management_id` = `task_management`.id
+
+        <where>
+			<if test="belong != null and belong != ''">
+				and `task_management`.`task_name` like concat ('%', #{belong}, '%')
+			</if>
+
+        </where>
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Subtasks">
+        select * from subtasks where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from subtasks where  id = #{id}
+    </delete>
+
+</mapper>
