@@ -33,6 +33,30 @@
 | **公告管理** | 公告发布、富文本编辑、发布时间记录 |
 | **数据导出** | 支持 Excel 格式导出各类数据 |
 
+### 部分页面展示
+- **员工信息**：在此界面，管理员可对员工信息进行编辑和删除，通过顶部搜索栏可以通过性别检索当前员工的男女数量，也可以通过账号或手机号查找对应的员工信息。系统允许通过excel模板批量导入导出员工信息。
+<img width="683" height="314" alt="图片" src="https://github.com/user-attachments/assets/163691c0-64d8-413b-8aca-64e8352cf5a0" />
+员工可在此界面修改自己的各项信息，包括姓名、联系方式、职业技能等基本信息。
+<img width="663" height="566" alt="图片" src="https://github.com/user-attachments/assets/3c52dfd6-7250-4d35-9216-91585ef6e4fe" />
+
+ - **任务信息页面**：在该页面中，管理员可以对主任务信息进行一系列操作，包括增加新的主任务信息、删除已有的主任务信息，以及对已有的主任务信息进行修改和查询操作。此外，管理员还可以通过任务名称搜索对应的任务信息。
+<img width="684" height="307" alt="图片" src="https://github.com/user-attachments/assets/475bb166-ecb4-4eb2-9cf2-baae60972518" />
+
+<img width="684" height="534" alt="图片" src="https://github.com/user-attachments/assets/4d3d1a07-7e6b-4dbe-8b53-8592b1bb74ff" />
+
+- **子任务信息页面**：在该页面中，管理员可以对子任务信息进行一系列操作，包括增加新的子任务信息、删除已有的子任务信息，以及对已有的子任务信息进行修改和查询操作。此外，管理员还可以通过任务名称搜索对应的任务信息。
+<img width="682" height="321" alt="图片" src="https://github.com/user-attachments/assets/ebcc1e48-4b2b-441d-a9e1-8c4a94441043" />
+
+<img width="682" height="430" alt="图片" src="https://github.com/user-attachments/assets/4237cb43-8fa6-47e1-ae61-fdda1cb6afa2" />
+
+- **请假审核页面**：在该页面中，管理员可以对员工提交的请假申请进行审核，审核有三个状态，分别是待审核，审核通过与审核拒绝，如不通过可以填写相关理由。此外，管理员还可以批量删除废弃请假记录。
+<img width="675" height="303" alt="图片" src="https://github.com/user-attachments/assets/4902fd5d-4567-4790-95eb-1d1022d46539" />
+
+<img width="678" height="365" alt="图片" src="https://github.com/user-attachments/assets/bd083e2a-b26e-481a-b2f7-db9f16119b8f" />
+
+- **请假申请页面**：在该页面中，员工可以输入请假信息提交请假申请，在审核通过前可以修改和撤销对应的请假信息，系统会自动读取当前员工的姓名。每位员工只能查看自己的请假信息。
+<img width="668" height="306" alt="图片" src="https://github.com/user-attachments/assets/925a56fc-8cb0-4c08-b0d8-0f357b6f5f5f" />
+
 ### 角色权限
 
 - **管理员 (admin)**：系统配置、任务发布、审批管理、数据导出
